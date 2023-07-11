@@ -1,9 +1,9 @@
 import { ProgressSpinner } from 'primereact/progressspinner';
 
-import './LoadingView.css';
+import styles from './LoadingView.module.css';
 
 const LoadingView = () => (
-	<div className="loading-center">
+	<div className={styles.loadingCenter}>
 		<ProgressSpinner animationDuration="1s" />
 	</div>
 );

@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 
-import './ErrorView.css';
+import styles from './ErrorView.module.css';
 
 const ErrorView = ({ error }: Props) => {
 	return (
-		<div className="error-center">
-			<div className="error-container">
+		<div className={styles.errorCenter}>
+			<div className={styles.errorContainer}>
 				<p className="text-secondary">Errors occurred</p>
 				<h1 className="m-5">{error.message ?? 'Internal server error'}</h1>
 				<a href="/" className="p-button p-button-sm button-primary">

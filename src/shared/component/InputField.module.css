@@ -1,0 +1,11 @@
+.style {
+	font-size: 1rem;
+	width: 500px;
+	padding: 0.5rem;
+	border: solid 2px silver;
+	border-radius: 0.25rem;
+}
+
+.style:focus {
+	outline: solid 2px skyblue;
+}
