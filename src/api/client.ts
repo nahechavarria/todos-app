@@ -1,3 +1,5 @@
+import { Task } from '../context/todos';
+
 const apiUrl = 'https://type.fit/api/quotes';
 
 /**
@@ -62,4 +64,22 @@ const read = async <T>(
 	return data as T[];
 };
 
-export { read };
+/**
+ * Create a task in localstorage
+ * @param task
+ * @returns task array
+ */
+const create = (data: Task) => {
+	localStorage.setItem(data.id, data.description);
+};
+
+/**
+ * Delete a task on the localstorage
+ * @param import
+ * @return task array
+ */
+const remove = (id: string) => {
+	localStorage.removeItem(id);
+};
+
+export { read, create, remove };
