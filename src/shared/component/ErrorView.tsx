@@ -7,12 +7,14 @@ const ErrorView = ({ error }: Props) => {
 	return (
 		<div className={styles.errorCenter}>
 			<div className={styles.errorContainer}>
-				<p className="text-secondary">Errors occurred</p>
-				<h1 className="m-5">{error.message ?? 'Internal server error'}</h1>
-				<a href="/" className="p-button p-button-sm button-primary">
+				<p className={styles.textSecondary}>Errors occurred</p>
+				<h1 className={styles.m5}>
+					{error.message ?? 'Internal server error'}
+				</h1>
+				<a href="/" className={styles.primaryButton}>
 					<span>
 						Go to Home
-						<FontAwesomeIcon icon={faExternalLink} className="ml-3" />
+						<FontAwesomeIcon icon={faExternalLink} className={styles.ml3} />
 					</span>
 				</a>
 			</div>

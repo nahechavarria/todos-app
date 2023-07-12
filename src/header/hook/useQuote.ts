@@ -1,30 +1,34 @@
 import { useState, useEffect } from 'react';
 import { read } from '../../api/client';
+import { Quote } from '../../context/quotes';
 
 export const useQuote = () => {
-	const [quotes, setQuotes] = useState([]);
-	const [error, setError] = useState<any | null>(null);
+	const [quotes, setQuotes] = useState<Quote[]>([]);
+	const [error, setError] = useState<Error | null>(null);
 	const [loading, setLoading] = useState(false);
 
 	const getData = async () => {
 		try {
 			setLoading(true);
-			setQuotes(await read('/'));
+			const result = await read<Quote>('/');
+			setQuotes(result);
 			setError(null);
 			setLoading(false);
 		} catch (err) {
-			setError(err);
+			setError(err as Error);
 			setLoading(false);
 		}
 	};
 
-	const refetch = async () => {
-		await getData();
-	};
-
 	useEffect(() => {
-		getData();
+		getData().catch((err) => err);
 	}, []);
 
-	return { quotes, error, loading, refetch };
+	const getQuote = () => {
+		const total = quotes.length - 1;
+		const randomQuote = Math.floor(Math.random() * total);
+		return quotes[randomQuote];
+	};
+
+	return { getQuote, error, loading };
 };

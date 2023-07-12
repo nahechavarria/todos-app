@@ -1,6 +1,4 @@
-import { Task } from '../context/todos';
-
-const apiUrl = process.env.VITE_REACT_APP_API_URL!;
+const apiUrl = 'https://type.fit/api/quotes';
 
 /**
  * Handles all calls to api
@@ -41,12 +39,12 @@ const client = async (
 };
 
 /**
- * Calls client with GET requests of specific resources
+ * Calls client with GET requests of specific resources or return all data of localStorage
  * @param endpoint
  * @param signal
  * @returns resource array
  */
-const read = async <T extends Task>(endpoint: string, signal?: AbortSignal) => {
+const read = async <T>(endpoint: string, signal?: AbortSignal) => {
 	const data = await client(endpoint, {
 		method: 'GET',
 		signal,
@@ -55,46 +53,4 @@ const read = async <T extends Task>(endpoint: string, signal?: AbortSignal) => {
 	return data as T[];
 };
 
-/**
- * Calls client with POST requests of specific resource
- * @param endpoint
- * @param resource
- * @param signal
- * @returns resource
- */
-const create = async <T extends Task>(
-	endpoint: string,
-	task: Task,
-	signal?: AbortSignal
-) => {
-	const data = await client(endpoint, {
-		method: 'POST',
-		body: JSON.stringify(task),
-		signal,
-	});
-
-	return data as T;
-};
-
-/**
- * Calls client with PUT requests of specific resource
- * @param endpoint
- * @param resource
- * @param signal
- * @returns resource
- */
-const update = async <T extends Task>(
-	endpoint: string,
-	task: Task,
-	signal?: AbortSignal
-) => {
-	const data = await client(`${endpoint}/${task.id}`, {
-		method: 'PUT',
-		body: JSON.stringify(task),
-		signal,
-	});
-
-	return data as T;
-};
-
-export { read, create, update };
+export { read };

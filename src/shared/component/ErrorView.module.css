@@ -9,3 +9,26 @@
 .errorContainer {
 	text-align: center;
 }
+
+.primaryButton {
+	color: white;
+	background-color: #4a62b6;
+	padding: 12px;
+	border-radius: 5px;
+}
+
+.primaryButton:hover {
+	background-color: #6a6b72;
+}
+
+.textSecondary {
+	color: #9fa6b2;
+}
+
+.m5 {
+	margin: 30px;
+}
+
+.ml3 {
+	margin-left: 3px;
+}
