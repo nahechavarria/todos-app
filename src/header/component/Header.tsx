@@ -7,10 +7,12 @@ const Header = () => {
 	const { getQuote, error, loading } = useQuote();
 
 	const quote = getQuote();
-	if (error) return <ErrorView error={error} />;
+
 	return (
 		<div className={styles.container}>
-			{!quote || loading ? (
+			{error ? (
+				<ErrorView error={error} />
+			) : !quote || loading ? (
 				<LoadingView />
 			) : (
 				<div className={styles.quoteContainer}>

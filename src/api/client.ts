@@ -40,11 +40,20 @@ const client = async (
 
 /**
  * Calls client with GET requests of specific resources or return all data of localStorage
+ * @param local
  * @param endpoint
  * @param signal
  * @returns resource array
  */
-const read = async <T>(endpoint: string, signal?: AbortSignal) => {
+const read = async <T>(
+	local = true,
+	endpoint: string,
+	signal?: AbortSignal
+) => {
+	if (local) {
+		return;
+	}
+
 	const data = await client(endpoint, {
 		method: 'GET',
 		signal,

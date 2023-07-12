@@ -13,7 +13,7 @@ const ErrorView = ({ error }: Props) => {
 				</h1>
 				<a href="/" className={styles.primaryButton}>
 					<span>
-						Go to Home
+						Try a Gain
 						<FontAwesomeIcon icon={faExternalLink} className={styles.ml3} />
 					</span>
 				</a>
