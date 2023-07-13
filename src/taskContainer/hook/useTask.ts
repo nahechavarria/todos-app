@@ -7,7 +7,7 @@ export const useTask = () => {
 	const [tasks, setTasks] = useState<Task[]>([]);
 
 	const getTasks = () => {
-		const result = readStorage();
+		const result: Task[] = readStorage();
 		setTasks(result);
 	};
 
@@ -15,5 +15,5 @@ export const useTask = () => {
 		getTasks();
 	}, []);
 
-	return { tasks, getTasks };
+	return { tasks, refreshTaskList: getTasks };
 };

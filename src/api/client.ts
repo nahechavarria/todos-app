@@ -61,25 +61,14 @@ const read = async <T>(endpoint: string, signal?: AbortSignal) => {
  */
 const readStorage = (): Task[] => {
 	const result = localStorage.getItem('tasks');
-	return result ? JSON.parse(result) : [];
+	return result ? (JSON.parse(result) as Task[]) : [];
 };
 
 /**
- * Create a task in localstorage
- * @param task
- * @returns task array
+ * Update task list in localstorage
+ * @param data
  */
-const create = (data: Task): void => {
+const updateStorage = (data: Task[]) => {
 	localStorage.setItem('tasks', JSON.stringify(data));
 };
-
-/**
- * Delete a task on the localstorage
- * @param import
- * @return task array
- */
-const remove = (id: string) => {
-	localStorage.removeItem(id);
-};
-
-export { read, readStorage, create, remove };
+export { read, readStorage, updateStorage };
