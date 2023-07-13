@@ -41,21 +41,12 @@ const client = async (
 };
 
 /**
- * Calls client with GET requests of specific resources or return all data of localStorage
- * @param local
+ * Calls client with GET requests of specific resources
  * @param endpoint
  * @param signal
  * @returns resource array
  */
-const read = async <T>(
-	local = true,
-	endpoint: string,
-	signal?: AbortSignal
-) => {
-	if (local) {
-		return;
-	}
-
+const read = async <T>(endpoint: string, signal?: AbortSignal) => {
 	const data = await client(endpoint, {
 		method: 'GET',
 		signal,
@@ -65,12 +56,21 @@ const read = async <T>(
 };
 
 /**
+ * Get all localStorage data
+ * @returns localStorage array
+ */
+const readStorage = (): Task[] => {
+	const result = localStorage.getItem('tasks');
+	return result ? JSON.parse(result) : [];
+};
+
+/**
  * Create a task in localstorage
  * @param task
  * @returns task array
  */
-const create = (data: Task) => {
-	localStorage.setItem(data.id, data.description);
+const create = (data: Task): void => {
+	localStorage.setItem('tasks', JSON.stringify(data));
 };
 
 /**
@@ -82,4 +82,4 @@ const remove = (id: string) => {
 	localStorage.removeItem(id);
 };
 
-export { read, create, remove };
+export { read, readStorage, create, remove };

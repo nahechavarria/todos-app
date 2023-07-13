@@ -10,7 +10,7 @@ export const useQuote = () => {
 	const getData = async () => {
 		try {
 			setLoading(true);
-			const result = await read<Quote>(false, '/');
+			const result = await read<Quote>('/');
 			setQuotes(result ?? []);
 			setError(null);
 			setLoading(false);

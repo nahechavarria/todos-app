@@ -1,17 +1,13 @@
 import { Header } from '../../header';
-import { InputField } from '../../shared/component/InputField';
-import { Button } from '../../shared/component/Button';
 
 import styles from './Home.module.css';
+import { TaskContainer } from '../../taskContainer/component/TaskContainer';
 
 const Home = () => {
 	return (
 		<div className={styles.container}>
 			<Header />
-			<div className={styles.listHeader}>
-				<InputField />
-				<Button />
-			</div>
+			<TaskContainer />
 		</div>
 	);
 };
