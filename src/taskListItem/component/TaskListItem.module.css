@@ -1,0 +1,19 @@
+.container {
+	width: 40%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 10px 0 10px 0;
+}
+
+.completed {
+	width: 20%;
+}
+
+.description {
+	width: 80%;
+}
+
+.delete {
+	width: 20%;
+}
