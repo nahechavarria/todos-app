@@ -1,40 +1,40 @@
-input {
-	display: none;
-}
-
-span {
-	display: inline-block;
-	position: relative;
-	height: 2em;
-	width: 2em;
-	background-color: black;
-	border-radius: 100%;
-	transition: all 0.7s;
-}
-
-label {
-	font-size: 2em;
+.circleCheck {
+	border: solid 1px #55c4e2;
+	border-radius: 50%;
+	height: 24px;
+	width: 24px;
+	min-width: 24px;
 	cursor: pointer;
+	transition: border-color 0.2s ease-in-out;
 }
 
-label input:checked ~ span {
-	box-shadow: 0px 0px 30px 0px #09f;
+.circleCheck:hover {
+	border-color: #09f;
+	box-shadow: 0px 0px 10px #09f;
 }
 
-span:after {
-	content: '';
-	position: absolute;
-	border: solid white;
-	border-width: 0 0.3em 0.3em 0;
-	transform: rotate(45deg);
-	width: 0.5em;
-	height: 1em;
-	left: 0.6em;
-	top: 0.25em;
-	opacity: 0;
-	transition: 0.3s ease;
+.squareCheck {
+	border: solid 1px #ce7878;
+	border-radius: 10%;
+	height: 24px;
+	width: 24px;
+	min-width: 24px;
+	cursor: pointer;
+	transition: border-color 0.2s ease-in-out;
+	background-image: url('../../assets/images/close.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 70%;
 }
 
-label input:checked ~ span:after {
-	opacity: 1;
+.squareCheck:hover {
+	border-color: #ce7878;
+	box-shadow: 0px 0px 10px #ce7878;
+}
+
+.circleCheckCheked {
+	border-color: #09f;
+	background-image: url('../../assets/images/checkmark.png');
+	background-repeat: no-repeat;
+	background-position: center;
 }

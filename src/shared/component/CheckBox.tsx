@@ -1,13 +1,24 @@
-import { Task } from '../../context/todos';
 import styles from './CheckBox.module.css';
 
-const CheckBox = (handleChange: (task: Task) => void) => {
+const CheckBox = ({ type, checkValue, Action }: Props) => {
+	const handleClick = () => {
+		Action();
+	};
+
 	return (
-		<label>
-			<input type="checkbox" onChange={() => handleChange} />
-			<span></span>
-		</label>
+		<div
+			className={`${
+				type === 'circle' ? styles.circleCheck : styles.squareCheck
+			} ${checkValue ? styles.circleCheckCheked : ''}`}
+			onClick={handleClick}
+		></div>
 	);
+};
+
+type Props = {
+	type: string;
+	checkValue: boolean;
+	Action: () => void;
 };
 
 export { CheckBox };

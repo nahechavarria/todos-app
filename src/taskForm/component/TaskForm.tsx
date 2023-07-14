@@ -30,6 +30,7 @@ const TaskForm = ({ onSubmit }: Props) => {
 					placeholder="New task"
 					required
 					onChange={(e) => handleChange(e.target.value)}
+					maxLength={50}
 				/>
 				<button className={styles.buttonTask} type="submit">
 					Add task
