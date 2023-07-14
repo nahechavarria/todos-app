@@ -6,9 +6,9 @@ import { useTask } from '../hook/useTask';
 import { useDeleteTask } from '../hook/useDeleteTask';
 import { useUpdateTask } from '../hook/useUpdateTask';
 
-import styles from './TaskContainer.module.css';
 import { Task } from '../../context/todos';
 import { Pagination } from '../../shared/component/Pagination';
+import styles from './TaskContainer.module.css';
 
 const TaskContainer = () => {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -17,11 +17,27 @@ const TaskContainer = () => {
 	const { deleteTask } = useDeleteTask(refreshTaskList);
 	const { updateTask } = useUpdateTask(refreshTaskList);
 
+	const result: Task[] = [];
 	const totalPages = Math.ceil(tasks.length / 8);
+
+	const handlePaginationView = () => {
+		const totalRows = 8;
+		const end = currentPage * totalRows;
+		const start = end - totalRows;
+
+		if (tasks.length) {
+			for (let i = start; i < end; i++) {
+				if (tasks[i] !== undefined) result.push(tasks[i]);
+			}
+		}
+	};
 
 	const handlePageChange = (pageNumber: number) => {
 		setCurrentPage(pageNumber);
+		handlePaginationView();
 	};
+
+	handlePaginationView();
 
 	const handleDelete = (task: Task) => {
 		deleteTask(task);
@@ -40,7 +56,7 @@ const TaskContainer = () => {
 		<div className={styles.container}>
 			<TaskForm onSubmit={handleSubmit} />
 			<TaskList
-				tasks={tasks}
+				tasks={result}
 				onComplete={handleComplete}
 				onDelete={handleDelete}
 			/>

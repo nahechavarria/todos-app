@@ -7,7 +7,7 @@ export const useTask = () => {
 	const [tasks, setTasks] = useState<Task[]>([]);
 
 	const getTasks = () => {
-		const result: Task[] = readStorage();
+		const result = readStorage();
 		setTasks(result);
 	};
 
